@@ -1,25 +1,14 @@
-import logo from './logo.svg';
+import Modal from './components/Modal/Modal';
+import { useState } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+  const [showModal, setShowModal] = useState(false);
 
+  return (<><button onClick={() => setShowModal(!showModal)}>Click Me!</button>
+    <div id="parent" style={{ height: '400px', width: '50%', backgroundColor: 'lightslategray', margin: '200px 0 0 100px'}}>
+      <Modal size='md' isActive={showModal} adjustToParent={true}><div>Nutsack</div></Modal>
+    </div>
+  </>);
+}
 export default App;
