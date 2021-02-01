@@ -124,6 +124,9 @@ const ModalButton = ({fontColor = 'black', bgColor = 'white', text = ''}) => {
             padding: '5px',
             border: `1px solid ${color}`,
             borderRadius: '10px',
+            MozUserSelect: 'none',
+            WebkitUserSelect: 'none',
+            MsUserSelect: 'none',
         }}
         onMouseOver={reverseColors}
         onMouseLeave={reverseColors}
