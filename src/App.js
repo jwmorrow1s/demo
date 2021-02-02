@@ -4,10 +4,23 @@ import './App.css';
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
+  // console.log(showModal);
 
-  return (<><button onClick={() => setShowModal(!showModal)}>Click Me!</button>
+  return (<><button onClick={() => {
+    setShowModal(!showModal);
+  }}>Click Me!</button>
     <div id="parent" style={{ height: '400px', width: '50%', backgroundColor: 'lightslategray', margin: '200px 0 0 100px'}}>
-      <Modal size='sm' isActive={showModal} adjustToParent={true}></Modal>
+      <Modal size='xl'
+             isActive={showModal} 
+             confirmAction={() => {
+                console.log('confirm');
+                setShowModal(false);
+             }}
+             closeAction={() => {
+                console.log('close');
+                setShowModal(false);
+             }} 
+             adjustToParent={false}></Modal>
     </div>
   </>);
 }
