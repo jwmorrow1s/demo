@@ -21,6 +21,8 @@ const Modal = ({isActive,
     adjustToParent = false,
     closeAction = () => {}, 
     confirmAction = () => {}, 
+    fontColor = 'black',
+    bgColor = 'white',
     children}) => {
     const effectiveSize = SIZES[size && typeof(size) === 'string' && size.toLowerCase()] || SIZES.md;
     const ref = useRef(null);
@@ -79,10 +81,18 @@ const Modal = ({isActive,
             color: 'black',
             borderRadius: '25px',
             boxShadow: '4px 3px 2px 0 rgba(0, 0, 0, 0.4)'
-       }}><CloseBar action={safeCallEach(closeAction, () => setActive(false))}/>
+       }}>
+        <CloseBar 
+            bgColor={bgColor} 
+            fontColor={fontColor} 
+            action={safeCallEach(closeAction, () => setActive(false))}
+        />
         <div>{children}</div>
-        <ConfirmCancelBar confirmAction={safeCallEach(confirmAction, () => setActive(false))} 
-                          cancelAction={safeCallEach(closeAction, () => setActive(false))}/>
+        <ConfirmCancelBar 
+            fontColor={fontColor}
+            bgColor={bgColor}
+            confirmAction={safeCallEach(confirmAction, () => setActive(false))} 
+            cancelAction={safeCallEach(closeAction, () => setActive(false))}/>
         </div>
        </> 
        : null 
@@ -169,13 +179,26 @@ const ConfirmCancelBar = ({
     fontColor = 'black', 
     bgColor = 'white', 
     confirmAction = () => {}, 
-    cancelAction = () => {}}) => <div style={{
+    cancelAction = () => {}}) => 
+    <div style={{
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-around',
         width: '95%',
         marginBottom: '5px',
-    }}
-><ModalButton text="Confirm" action={confirmAction}/><ModalButton text="Cancel" action={cancelAction}/></div>
+    }}>
+    <ModalButton 
+        text="Confirm" 
+        action={confirmAction}
+        fontColor={fontColor}
+        bgColor={bgColor}
+    />
+    <ModalButton 
+        text="Cancel" 
+        action={cancelAction}
+        fontColor={fontColor}
+        bgColor={bgColor}
+    />
+    </div>
 
 export default Modal;

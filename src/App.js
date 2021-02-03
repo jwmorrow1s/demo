@@ -14,7 +14,9 @@ const App = () => {
              isActive={showModal} 
              confirmAction={() => setShowModal(false)}
              closeAction={() => setShowModal(false)} 
-             adjustToParent={false}></Modal>
+             adjustToParent={false}
+             ></Modal>
+             
     </div>
   </>);
 }
