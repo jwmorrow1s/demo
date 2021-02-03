@@ -79,7 +79,7 @@ const Modal = ({isActive,
             color: 'black',
             borderRadius: '25px',
             boxShadow: '4px 3px 2px 0 rgba(0, 0, 0, 0.4)'
-       }}><CloseBar action={() => setActive(false)}/>
+       }}><CloseBar action={safeCallEach(closeAction, () => setActive(false))}/>
         <div>{children}</div>
         <ConfirmCancelBar confirmAction={safeCallEach(confirmAction, () => setActive(false))} 
                           cancelAction={safeCallEach(closeAction, () => setActive(false))}/>
@@ -127,7 +127,7 @@ const BigX = ({fontColor = 'white', bgColor = 'black', action = () => {}}) => {
     onMouseLeave={reverseColors}
     onMouseDown={reverseColors}
     onMouseUp={reverseColors}
-    onClick={action}
+    onClick={safeCallEach(reverseColors, action)}
     >X</span>);
 }
 
@@ -161,7 +161,7 @@ const ModalButton = ({fontColor = 'black', bgColor = 'white', text = '', action=
         onMouseLeave={reverseColors}
         onMouseDown={reverseColors}
         onMouseUp={reverseColors}
-        onClick={action}
+        onClick={safeCallEach(reverseColors, action)}
     >{text}</div>);
 }
 

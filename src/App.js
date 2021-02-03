@@ -12,14 +12,8 @@ const App = () => {
     <div id="parent" style={{ height: '400px', width: '50%', backgroundColor: 'lightslategray', margin: '200px 0 0 100px'}}>
       <Modal size='xl'
              isActive={showModal} 
-             confirmAction={() => {
-                console.log('confirm');
-                setShowModal(false);
-             }}
-             closeAction={() => {
-                console.log('close');
-                setShowModal(false);
-             }} 
+             confirmAction={() => setShowModal(false)}
+             closeAction={() => setShowModal(false)} 
              adjustToParent={false}></Modal>
     </div>
   </>);
